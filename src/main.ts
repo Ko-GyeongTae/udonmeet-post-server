@@ -6,7 +6,10 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
-  app.enableCors();
+  app.enableCors({
+    origin: true,
+    credentials: true,
+  });
   app.useStaticAssets(join(__dirname, '..', 'public'), {
     prefix: '/public/',
   });
