@@ -15,7 +15,6 @@ export class UploadController {
   @UseInterceptors(FilesInterceptor('images', 10, multerOptions))
   @Post('/list')
   uploadFiles(@UploadedFiles() files: Array<Express.Multer.File>) {
-    const uploadedFiles = this.uploadService.uploadFiles(files);
-    console.log(uploadedFiles);
+    return this.uploadService.uploadFiles(files);
   }
 }
